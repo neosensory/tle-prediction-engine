@@ -9,6 +9,16 @@ public class TemeGeodeticConverter {
   static final double E = 0.081819190842622; // Earth's eccentricity - WGS84 Model
   static final double A = 6378.137; // Earth's semi-major axis (km) - WGS84 Model
 
+  /**
+   * Convert a given TEME coordinate to a geodetic latitude/longitude/altitude coordinate
+   *
+   * @param x TEME coordinate in km
+   * @param y TEME coordinate in km
+   * @param z TEME coordinate in km
+   * @param date Date for coordinate converstion. If using SGP4, this should be the same as the date
+   *     for which the prediction is being made.
+   * @return the equivalent latitude, longitude, and altitude
+   */
   public static double[] getLatLonAlt(double x, double y, double z, Date date) {
     // algorithm credit: http://www.stltracker.com/resources/equations
 
@@ -54,6 +64,13 @@ public class TemeGeodeticConverter {
     return latLonAlt;
   }
 
+  /**
+   * Obtain the Greenwich Mean Sidereal Time (GMST)--the angle that accounts for the Earth's
+   * rotation needed for converting to an Earth fixed coordinate system
+   *
+   * @param julianTime the time using the Julian date
+   * @return the Greenwich Mean Sidereal Time
+   */
   public static double getGmst(double julianTime) {
     double UT = (julianTime + 0.5) % 1.0;
     double T = (julianTime - UT - 2451545.0) / 36525.0;
@@ -63,6 +80,11 @@ public class TemeGeodeticConverter {
     return theta_GMST; // alternatively use gstime(julianTime) in Sgp4;
   }
 
+  /**
+   * Convert to Julian time from the time of day and Gregorian calendar
+   * @param date Gregorian calendar date
+   * @return the corresponding Julian time
+   */
   public static double getJulianTime(Date date) {
     TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
