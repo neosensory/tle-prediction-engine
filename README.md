@@ -1,4 +1,4 @@
-# TLE-Prediction-Engine
+# tle-prediction-engine
 A Java Implementation of SGP4 that is able to provide satellite predictions with geodetic (latitude, longitude, altitude) output. This library is built on top of GitHub user aholinch's [SGP4 multiplatform implementations](https://github.com/aholinch/sgp4/) with much credit going to David Vallado's original widely used code. The algorithms for converting to geodetic coordinates are taken from [stltracker.com](http://www.stltracker.com/resources/equations) and the algorithm for converting to Julian time is from [Bill Jefferys' Julian dates page](https://quasar.as.utexas.edu/BillInfo/JulianDatesG.html).
 
 ## Some quick background for the layperson
