@@ -4,6 +4,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
+/**
+ * This class provides methods useful in converting from a true equator mean equinox (TEME)
+ * coordinate system to a geodetic (i.e. latitude/longitude/altitude) coordinate system.
+ *
+ * Algorithm credits: http://www.stltracker.com/resources/equations and
+ * https://quasar.as.utexas.edu/BillInfo/JulianDatesG.html
+ *
+ * @author Scott Novich (GitHub user, GreatScott)
+ */
 public class TemeGeodeticConverter {
 
   static final double E = 0.081819190842622; // Earth's eccentricity - WGS84 Model
@@ -82,6 +91,7 @@ public class TemeGeodeticConverter {
 
   /**
    * Convert to Julian time from the time of day and Gregorian calendar
+   *
    * @param date Gregorian calendar date
    * @return the corresponding Julian time
    */
